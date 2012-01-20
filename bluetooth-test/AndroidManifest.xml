@@ -17,7 +17,11 @@
             </intent-filter>
         </activity>
         <service android:name=".BluetoothTestService"/>
-        
+        <receiver android:name=".ConnectToDeviceBroadcastReceiver">
+        	<intent-filter>
+        		<action android:name="collaboRhythm.android.deviceGateway.CONNECT_TO_HEALTH_DEVICE"></action>
+        	</intent-filter>
+        </receiver>
         <!--  <receiver android:name=".DeviceFoundBroadcastReceiver">
         	<intent-filter>
         		<action android:name="android.bluetooth.device.action.FOUND"></action>

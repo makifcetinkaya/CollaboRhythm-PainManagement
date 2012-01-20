@@ -9,21 +9,19 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
-final public class ClientConnectThread extends Thread {
+public class ClientConnectThread extends Thread {
 	
 	public static BluetoothSocket mBluetoothSocket;
 	private Handler mConnectionHandler;
 	private BluetoothDevice mBluetoothDevice;
-	private static final UUID ARDUINO_BT_UUID =  UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
-
-	private static final String ARDUINO_BT_MAC= "00:07:80:90:8A:F5";
+	private static final UUID uuid =  UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
 	public ClientConnectThread(Handler handler, BluetoothDevice dev){
 		mBluetoothDevice = dev;
 		mConnectionHandler = handler;
 
 		try {
-			mBluetoothSocket = mBluetoothDevice.createRfcommSocketToServiceRecord(ARDUINO_BT_UUID);
+			mBluetoothSocket = mBluetoothDevice.createRfcommSocketToServiceRecord(uuid);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			Log.d("BT", "could not create bluetooth socket..");
